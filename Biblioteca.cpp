@@ -1,8 +1,6 @@
 #include "Biblioteca.h"
 #include <iostream>
 
-
- 
 Biblioteca::Biblioteca(/* args */){}
  
 Biblioteca::~Biblioteca(){}

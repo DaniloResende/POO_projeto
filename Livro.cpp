@@ -6,7 +6,6 @@ Livro::~Livro(){}
 
 void Livro::set_editora(string p_editora){
     editora = p_editora;
-    get
 }
 
 void Livro::set_genero(string p_genero){

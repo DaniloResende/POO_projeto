@@ -13,10 +13,3 @@ public:
    ~Monografia();
 };
 
-Monografia::Monografia(/* args */)
-{
-}
-
-Monografia::~Monografia()
-{
-}
