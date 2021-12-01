@@ -3,10 +3,6 @@
 #include<string>
 #include "Biblioteca.h"
 
- 
-
- 
-
 class Emprestimo
 {
 private:
@@ -59,45 +55,8 @@ Periodico::~Periodico()
 {
 }
 
-class Monografia
-{
-private:
-   /* data */
-public:
-   Monografia(/* args */);
-   ~Monografia();
-};
 
-Monografia::Monografia(/* args */)
-{
-}
 
-Monografia::~Monografia()
-{
-}
-
-class Item
-{
-private:
-   /* data */
-public:
-   Item(/* args */);
-   ~Item();
-};
-
-Item::Item(/* args */)
-{
-}
-
-Item::~Item()
-{
-}
-
-/*int main(int argc, char const *argv[])
-{
-   Biblioteca a;
-   return 0;
-}*/
 
 
    

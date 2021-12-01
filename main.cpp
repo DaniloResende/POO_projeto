@@ -1,6 +1,4 @@
-
 #include "Biblioteca.h"
-
 
 int main(){
     Livro livro1, livro2;
