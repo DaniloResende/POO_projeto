@@ -1,7 +1,6 @@
 #include "Periodico.h"
 #include <string>
-
-using namespace std
+using namespace std;
 
 Periodico::Periodico(){}
 
