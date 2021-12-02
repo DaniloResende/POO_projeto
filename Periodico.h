@@ -4,9 +4,9 @@ using namespace std
 class Periodico
 {
 private:
-   String edicao;
-   String local;
-   String editora;
+   string edicao;
+   string local;
+   string editora;
 public:
    Periodico(/* args */);
    ~Periodico();
