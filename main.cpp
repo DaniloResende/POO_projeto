@@ -21,7 +21,7 @@ int main(){
     bib1.AddLivro(&livro2);
     bib1.AddUser(&usuario1);
     bib1.AddUser(&usuario2);
-    bib1.Emprestar(&livro1,&usuario1);
+    bib1.Emprestar({&livro1,&livro2},&usuario1);
     bib1.ShowAllBooks();
     bib1.ShowAllUsers();
     return 0;

@@ -8,7 +8,6 @@ Usuario::Usuario(string p_cpf, string p_nome, string p_datanascimento){
     cpf = p_cpf;
     nome = p_nome;
     datanascimento = p_datanascimento;
-    livrosemprestados = {};
 }
 
 Usuario::~Usuario(){}
@@ -27,14 +26,14 @@ string Usuario::get_datanascimento(){
 
 void Usuario::livrosemprestadosUsuario(){
     for (size_t i = 0; i < livrosemprestados.size(); ++i) {
-        cout << livrosemprestados[i].get_nome() << " ";
+        cout << livrosemprestados[i]->get_nome() << " ";
     }
     cout << endl;
 }
 
 
-void Usuario::add_livro_emprestado(Livro livro){
+void Usuario::add_livro_emprestado(Livro *livro){
     livrosemprestados.push_back(livro);
-    livro.set_emprestado(1);
+    livro->set_emprestado(1);
 }
 
