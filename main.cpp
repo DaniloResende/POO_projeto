@@ -17,11 +17,11 @@ int main(){
     Usuario usuario1("09009611558","Nelson","12/12/2002");
     Usuario usuario2("000000000","Nena", "11/09/2001");
     Biblioteca bib1;
-    bib1.AddLivro(livro1);
-    bib1.AddLivro(livro2);
-    bib1.AddUser(usuario1);
-    bib1.AddUser(usuario2);
-    bib1.Emprestar(livro1,usuario1);
+    bib1.AddLivro(&livro1);
+    bib1.AddLivro(&livro2);
+    bib1.AddUser(&usuario1);
+    bib1.AddUser(&usuario2);
+    bib1.Emprestar(&livro1,&usuario1);
     bib1.ShowAllBooks();
     bib1.ShowAllUsers();
     return 0;

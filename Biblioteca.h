@@ -1,8 +1,7 @@
 #include "Usuario.h"
- 
+
 using namespace std;
 
- 
 class Biblioteca
 {
 private:
