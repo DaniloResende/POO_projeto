@@ -9,11 +9,11 @@ Biblioteca::~Biblioteca(){}
 
                       
 void Biblioteca::AddLivro(Livro *livro){
-    livros.push_back(*livro);
+    livros.push_back(livro);
 }
 
 void Biblioteca::AddUser(Usuario *usuario){
-    usuarios.push_back(*usuario);
+    usuarios.push_back(usuario);
 }
 
 void Biblioteca::ReadLivro(Livro *livro){
@@ -45,14 +45,14 @@ void Biblioteca::ReadUsuario(Usuario *usuario){
 
 }
 void Biblioteca::ShowAllUsers(){
-    for (size_t i = 0; i < usuarios->size(); ++i) {
+    for (size_t i = 0; i < usuarios.size(); ++i) {
         ReadUsuario(usuarios[i]);
         cout << "--------------------------------------------------------------" << endl;
     }
 
 }
 void Biblioteca::ShowAllBooks(){
-        for (size_t i = 0; i < livros->size(); ++i) {
+        for (size_t i = 0; i < livros.size(); ++i) {
         ReadLivro(livros[i]);
         cout << "--------------------------------------------------------------" << endl;
     }
@@ -62,9 +62,9 @@ void Biblioteca::ShowAllBooks(){
 void Biblioteca::UpdateLivro(Livro livro){
 
 }
-void Biblioteca::DeleteLivro(Livro livro){
+void Biblioteca::DeleteLivro(Livro *livro){
     for (size_t i = 0; i < livros.size(); ++i) {
-        if (livros[i].get_nome() == livro.get_nome() ){
+        if (livros[i]->get_nome() == livro->get_nome() ){
             livros.erase(livros.begin()+i);
         }
     }
@@ -75,20 +75,23 @@ void Biblioteca::UpdateUser(Usuario usuario){
 
 }
 
-void Biblioteca::DeleteUser(Usuario usuario){
+void Biblioteca::DeleteUser(Usuario *usuario){
         for (size_t i = 0; i < usuarios.size(); ++i) {
-        if (usuarios[i].get_cpf() == usuario.get_cpf()){
+        if (usuarios[i]->get_cpf() == usuario->get_cpf()){
             usuarios.erase(usuarios.begin()+i);
         }
     }
 
 }
-void Biblioteca::Emprestar(Livro *livro, Usuario *usuario){
-    usuario->add_livro_emprestado(*livro);
-    livro->set_emprestado(1);
+void Biblioteca::Emprestar(vector<Livro *> livros, Usuario *usuario){
+    for (size_t i = 0; i < livros.size(); ++i){
+        usuario->add_livro_emprestado(livros[i]);
+        livros[i]->set_emprestado(1);
+    }
+    
 }
 void Biblioteca::Devolucao(vector<Livro> livros, Usuario usuario){
-    }
+}
 
 void Biblioteca::Adimplencia(Usuario usuario){
 
