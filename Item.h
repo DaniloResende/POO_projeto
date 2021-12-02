@@ -1,9 +1,10 @@
 #include <string>
 #include <vector>
+#include "Data.h"
 
 using namespace std;
 
-class Item
+class Item 
 {
     friend class Usuario;
 private:
@@ -11,8 +12,8 @@ private:
     string autor;
     int num_paginas;
     int ano_lancamento;
-    string dataEmprestadoInicio;
-    string dataEmprestadoFim;
+    Data *dataEmprestadoInicio;
+    Data *dataEmprestadoFim;
     int emprestado; //1=emprestado; 0=não esta emprestado
 public:
     Item(/* args */);
@@ -23,8 +24,8 @@ public:
     void set_numero_paginas(int p_num_paginas);
     void set_ano_lancamento(int p_ano_lancamento);
     void set_quantidade(int p_quantidade);
-    void data_emprestado_inicio(string p_dataEmprestadoInicio); //data em que o livro foi emprestado
-    void data_emprestado_fim(string p_dataEmprestadoFim);       //data em que o livro foi devolvido
+    void data_emprestado_inicio(Data *data_inicio, int dd, int mm, int aa); //data em que o livro foi emprestado
+    void data_emprestado_fim(Data *data_final, int dd, int mm, int aa);       //data em que o livro foi devolvido
     string get_nome();
     string get_autor();
     int get_emprestado();
@@ -33,4 +34,5 @@ public:
     string get_dataEmprestadoInicio();
     string get_dataEmprestadoFim();
 };
+
 
