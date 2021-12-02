@@ -18,5 +18,19 @@ void Periodico::set_editora(string p_editora)
 {
     editora = p_editora;
 }
+string Periodico::get_edicao()
+{
+    return edicao;
+}
 
+string Periodico::get_local()
+{
+    return local;
+}
+
+string Periodico::get_editora()
+{
+    return editora;
+}
+    
 

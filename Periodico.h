@@ -13,7 +13,9 @@ public:
    void set_edicao(string edicao);
    void set_local(string local);
    void set_editora(string editora);
-
+   string get_edicao();
+   string get_local();
+   string get_editora();
 };
 
 
