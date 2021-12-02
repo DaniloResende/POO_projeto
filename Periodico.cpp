@@ -1,8 +1,8 @@
 #include "Periodico.h"
 
-Periodico::Periodico(){}
+Periodico::Periodico(){};
 
-Periodico::~Periodico(){}
+Periodico::~Periodico(){};
 
 void Periodico::set_edicao(string p_edicao)
 {
