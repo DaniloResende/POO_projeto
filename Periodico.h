@@ -1,8 +1,10 @@
 #include <string>
+#include "Item.h"
 using namespace std;
 
-class Periodico
+class Periodico : public Item
 {
+   friend class Usuario;
 private:
    string edicao;
    string local;
