@@ -86,11 +86,13 @@ void Biblioteca::DeleteUser(Usuario *usuario){
 void Biblioteca::Emprestar(vector<Livro *> livros, Usuario *usuario){
     for (size_t i = 0; i < livros.size(); ++i){
         usuario->add_livro_emprestado(livros[i]);
-        livros[i]->set_emprestado(1);
     }
     
 }
-void Biblioteca::Devolucao(vector<Livro> livros, Usuario usuario){
+void Biblioteca::Devolucao(vector<Livro *> livros, Usuario *usuario){
+    for (size_t i = 0; i < livros.size(); ++i){
+    usuario->remove_livro_emprestado(livros[i]);
+    }
 }
 
 void Biblioteca::Adimplencia(Usuario usuario){

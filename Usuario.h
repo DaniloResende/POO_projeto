@@ -16,6 +16,7 @@ public:
    ~Usuario();
    void livrosemprestadosUsuario();//determina quais livros estao com o usuario
    void add_livro_emprestado(Livro *livro);
+   void remove_livro_emprestado(Livro *livro);
    string get_cpf();
    string get_nome();
    string get_datanascimento();
