@@ -27,12 +27,6 @@ void Data::set_ano(int p_ano){
     ano = p_ano;
 
 }
-string Data::string_data(){
-    string data_str;
-    data_str = to_string(dia) + '/' + to_string(mes) + '/' + to_string(ano);
-    return data_str;
-
-}
 Data::Data(/* args */){
 
 }

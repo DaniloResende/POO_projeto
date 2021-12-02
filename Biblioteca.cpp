@@ -83,36 +83,23 @@ void Biblioteca::DeleteUser(Usuario *usuario){
     }
 
 }
-void Biblioteca::Emprestar(vector<Livro *> livros, Usuario *usuario, string data){
+void Biblioteca::Emprestar(vector<Livro *> livros, Usuario *usuario, int d, int m, int a){
     for (size_t i = 0; i < livros.size(); ++i){
+        Data* dataInicio = new Data;
+        Data* dataFim = new Data;
         usuario->add_livro_emprestado(livros[i]);
-        livros[i]->data_emprestado_inicio(data);
-        string junta_mes;
-        string junta_ano;
-        string junta_dia;
-        junta_mes.push_back(data[3]);
-        junta_mes.push_back(data[4]);
-        junta_ano.push_back(data[6]);
-        junta_ano.push_back(data[7]);
-        junta_ano.push_back(data[8]);
-        junta_ano.push_back(data[9]);
-        junta_dia.push_back(data[0]);
-        junta_dia.push_back(data[1]);
-        int resultado_mes = stoi(junta_mes) + 1;
-        int resultado_ano = stoi(junta_ano);
-        int dia = stoi(junta_dia);
-        if (resultado_mes > 12){
-            resultado_mes = 1;
-            data.replace(data.find(data[3]),2,to_string(resultado_mes));
-            resultado_ano+= 1;
-            data.replace(data.find(data[5],5),4,to_string(resultado_ano));
+        livros[i]->data_emprestado_inicio(dataInicio,d,m,a);
+        int anof = a;
+        int mesf = m;
+        int diaf = d;
+        if (m+1 > 12){
+            anof= a+1;
         }
-        if (resultado_mes == 2 && dia > 29 ){
-            resultado_mes+=2;
-            dia=31-dia;
-            data.replace(data.find(data[3]),2,to_string(resultado_mes));
+        if (m+1 == 2 && d >29){
+            mesf = m+2;
+            diaf = d-30;
         }
-        livros[i]->data_emprestado_fim(data);
+        livros[i]->data_emprestado_fim(dataFim,diaf,mesf,anof);
     }
     
 }

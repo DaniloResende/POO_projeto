@@ -31,8 +31,8 @@ public:
     int get_emprestado();
     int get_num_paginas();
     int get_ano_lancamento();
-    string get_dataEmprestadoInicio();
-    string get_dataEmprestadoFim();
+    int get_dataEmprestadoInicio();
+    int get_dataEmprestadoFim();
 };
 
 
