@@ -6,14 +6,14 @@ using namespace std;
 class Biblioteca
 {
 private:
-   vector<Livro*> livros;
-   vector<Usuario*> usuarios;
+   vector<Livro> livros;
+   vector<Usuario> usuarios;
 public:
    Biblioteca(/* args */);
    ~Biblioteca();
    //CRUD
-   void AddLivro(Livro *livro);//poe livro(s) na biblioteca
-   void AddUser(Usuario *usuario);
+   void AddLivro(Livro livro);//poe livro(s) na biblioteca
+   void AddUser(Usuario usuario);
    void ReadLivro(Livro *livro);//consulta um livro  
    void ReadUsuario(Usuario *usuario);//consulta um usuario
    void ShowAllUsers();//mostra todos os usuarios da biblioteca

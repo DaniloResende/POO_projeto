@@ -8,12 +8,12 @@ Biblioteca::Biblioteca(/* args */){}
 Biblioteca::~Biblioteca(){}
 
                       
-void Biblioteca::AddLivro(Livro *livro){
-    livros.push_back(*livro);
+void Biblioteca::AddLivro(Livro livro){
+    livros.push_back(livro);
 }
 
-void Biblioteca::AddUser(Usuario *usuario){
-    usuarios.push_back(*usuario);
+void Biblioteca::AddUser(Usuario usuario){
+    usuarios.push_back(usuario);
 }
 
 void Biblioteca::ReadLivro(Livro *livro){
@@ -45,15 +45,15 @@ void Biblioteca::ReadUsuario(Usuario *usuario){
 
 }
 void Biblioteca::ShowAllUsers(){
-    for (size_t i = 0; i < usuarios->size(); ++i) {
-        ReadUsuario(usuarios[i]);
+    for (size_t i = 0; i < usuarios.size(); ++i) {
+        ReadUsuario(&usuarios[i]);
         cout << "--------------------------------------------------------------" << endl;
     }
 
 }
 void Biblioteca::ShowAllBooks(){
-        for (size_t i = 0; i < livros->size(); ++i) {
-        ReadLivro(livros[i]);
+        for (size_t i = 0; i < livros.size(); ++i) {
+        ReadLivro(&livros[i]);
         cout << "--------------------------------------------------------------" << endl;
     }
 
