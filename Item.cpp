@@ -1,5 +1,6 @@
 
 #include "Item.h"
+#include <iostream>
 
 Item::Item(){}
  
@@ -26,15 +27,15 @@ void Item::set_ano_lancamento(int p_ano_lancamento){
 }
 
 void Item::data_emprestado_inicio(Data *data_inicio, int dd, int mm, int aa){
-    data_inicio.set_dia(dd);
-    data_inicio.set_mes(mm);
-    data_inicio.set_ano(aa);
+    data_inicio->set_dia(dd);
+    data_inicio->set_mes(mm);
+    data_inicio->set_ano(aa);
 }
 
 void Item::data_emprestado_fim(Data *data_final, int dd, int mm, int aa){
-    data_final.set_dia(dd);
-    data_final.set_mes(mm);
-    data_final.set_ano(aa);
+    data_final->set_dia(dd);
+    data_final->set_mes(mm);
+    data_final->set_ano(aa);
 }
 
 string Item::get_nome(){
@@ -57,12 +58,11 @@ int Item::get_ano_lancamento(){
     return ano_lancamento;
 }
 
-string Item::get_dataEmprestadoInicio(){
-    string data = data_emprestado_inicio.string_data();
-    return data;
+int Item::get_dataEmprestadoInicio(){
+    cout << dataEmprestadoInicio->get_dia();
 }
 
-string Item::get_dataEmprestadoFim(){
-    string data = data_emprestado_fim.string_data()
+int Item::get_dataEmprestadoFim(){
+    int data = (dataEmprestadoFim->get_dia());
     return data;
 }
