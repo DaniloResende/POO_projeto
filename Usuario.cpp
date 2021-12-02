@@ -37,3 +37,11 @@ void Usuario::add_livro_emprestado(Livro *livro){
     livro->set_emprestado(1);
 }
 
+void Usuario::remove_livro_emprestado(Livro *livro){
+    for (size_t i = 0; i < livrosemprestados.size(); ++i){
+        if (livrosemprestados[i]->get_nome() == livro->get_nome() && livrosemprestados[i]->get_autor() == livro->get_autor()){
+            livrosemprestados.erase(livrosemprestados.begin()+i);
+            livro->set_emprestado(0);
+        }
+    }
+}
