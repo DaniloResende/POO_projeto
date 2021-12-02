@@ -58,11 +58,9 @@ int Item::get_ano_lancamento(){
 }
 
 string Item::get_dataEmprestadoInicio(){
-    string data = data_emprestado_inicio.string_data();
-    return data;
+
 }
 
 string Item::get_dataEmprestadoFim(){
-    string data = data_emprestado_fim.string_data()
-    return data;
+
 }
