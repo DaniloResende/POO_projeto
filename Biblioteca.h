@@ -5,8 +5,8 @@ using namespace std;
 class Biblioteca
 {
 private:
-   vector<Livro*> livros;
-   vector<Usuario*> usuarios;
+   vector<Livro *> livros;
+   vector<Usuario *> usuarios;
 public:
    Biblioteca(/* args */);
    ~Biblioteca();
