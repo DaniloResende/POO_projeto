@@ -12,8 +12,8 @@ private:
     string autor;
     int num_paginas;
     int ano_lancamento;
-    Data *dataEmprestadoInicio;
-    Data *dataEmprestadoFim;
+    Data* dataEmprestadoInicio;
+    Data* dataEmprestadoFim;
     int emprestado; //1=emprestado; 0=não esta emprestado
 public:
     Item(/* args */);

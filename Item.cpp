@@ -27,12 +27,14 @@ void Item::set_ano_lancamento(int p_ano_lancamento){
 }
 
 void Item::data_emprestado_inicio(Data *data_inicio, int dd, int mm, int aa){
+    dataEmprestadoInicio = data_inicio;
     data_inicio->set_dia(dd);
     data_inicio->set_mes(mm);
     data_inicio->set_ano(aa);
 }
 
 void Item::data_emprestado_fim(Data *data_final, int dd, int mm, int aa){
+        dataEmprestadoFim = data_final;
     data_final->set_dia(dd);
     data_final->set_mes(mm);
     data_final->set_ano(aa);
@@ -59,10 +61,10 @@ int Item::get_ano_lancamento(){
 }
 
 int Item::get_dataEmprestadoInicio(){
-    cout << dataEmprestadoInicio->get_dia();
+    return dataEmprestadoInicio->get_dia();
 }
 
 int Item::get_dataEmprestadoFim(){
-    int data = (dataEmprestadoFim->get_dia());
+    int data = dataEmprestadoFim->get_dia();
     return data;
 }

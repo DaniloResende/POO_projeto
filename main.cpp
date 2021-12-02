@@ -27,7 +27,7 @@ int main(){
     bib1.Devolucao({&livro1,&livro2},&usuario1,"02/12/2021");
     bib1.ShowAllBooks();
     bib1.ShowAllUsers();
-    livro1.get_dataEmprestadoInicio();
+    cout << livro1.get_dataEmprestadoInicio() << endl;
     cout << livro1.get_dataEmprestadoFim();
     return 0;
 }
