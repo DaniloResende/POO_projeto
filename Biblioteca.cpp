@@ -1,56 +1,58 @@
 #include "Biblioteca.h"
 #include <iostream>
 
+
+ 
 Biblioteca::Biblioteca(/* args */){}
  
 Biblioteca::~Biblioteca(){}
 
-
-void Biblioteca::AddLivro(Livro livro){
-    livros.push_back(livro);
+                      
+void Biblioteca::AddLivro(Livro *livro){
+    livros.push_back(*livro);
 }
 
-void Biblioteca::AddUser(Usuario usuario){
-    usuarios.push_back(usuario);
+void Biblioteca::AddUser(Usuario *usuario){
+    usuarios.push_back(*usuario);
 }
 
-void Biblioteca::ReadLivro(Livro livro){
-    cout << "Nome: " << livro.get_nome() << endl;
-    cout << "Autor: " << livro.get_autor()<< endl;
-    if (livro.get_emprestado() == 1)
+void Biblioteca::ReadLivro(Livro *livro){
+    cout << "Nome: " << livro->get_nome() << endl;
+    cout << "Autor: " << livro->get_autor()<< endl;
+    if (livro->get_emprestado() == 1)
     {
         string resp = "Sim";
         cout << "Emprestado: " << resp << endl;
     }
-    if (livro.get_emprestado() == 0)
+    if (livro->get_emprestado() == 0)
     {
         string resp = "Não";
         cout << "Emprestado: " << resp << endl;
     }
-    cout << "Genero: " << livro.get_genero()<< endl;
-    cout << "Número de páginas: " << livro.get_num_paginas()<< endl;
-    cout << "Ano de lançamento: " << livro.get_ano_lancamento()<< endl;
-    cout << "Editora: " << livro.get_editora()<< endl;
+    cout << "Genero: " << livro->get_genero()<< endl;
+    cout << "Número de páginas: " << livro->get_num_paginas()<< endl;
+    cout << "Ano de lançamento: " << livro->get_ano_lancamento()<< endl;
+    cout << "Editora: " << livro->get_editora()<< endl;
     
 
 }
-void Biblioteca::ReadUsuario(Usuario usuario){
-    cout << "Nome: " << usuario.get_nome() << endl;
-    cout << "CPF: " << usuario.get_cpf() << endl;
-    cout << "Data de nascimento: " << usuario.get_datanascimento() << endl;
+void Biblioteca::ReadUsuario(Usuario *usuario){
+    cout << "Nome: " << usuario->get_nome() << endl;
+    cout << "CPF: " << usuario->get_cpf() << endl;
+    cout << "Data de nascimento: " << usuario->get_datanascimento() << endl;
     cout << "Livros emprestados: ";
-    usuario.livrosemprestadosUsuario();
+    usuario->livrosemprestadosUsuario();
 
 }
 void Biblioteca::ShowAllUsers(){
-    for (size_t i = 0; i < usuarios.size(); ++i) {
+    for (size_t i = 0; i < usuarios->size(); ++i) {
         ReadUsuario(usuarios[i]);
         cout << "--------------------------------------------------------------" << endl;
     }
 
 }
 void Biblioteca::ShowAllBooks(){
-        for (size_t i = 0; i < livros.size(); ++i) {
+        for (size_t i = 0; i < livros->size(); ++i) {
         ReadLivro(livros[i]);
         cout << "--------------------------------------------------------------" << endl;
     }
@@ -81,8 +83,9 @@ void Biblioteca::DeleteUser(Usuario usuario){
     }
 
 }
-void Biblioteca::Emprestar(Livro livro, Usuario usuario){
-    usuario.livrosemprestados.push_back(livro);
+void Biblioteca::Emprestar(Livro *livro, Usuario *usuario){
+    usuario->add_livro_emprestado(*livro);
+    livro->set_emprestado(1);
 }
 void Biblioteca::Devolucao(vector<Livro> livros, Usuario usuario){
     }
