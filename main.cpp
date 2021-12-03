@@ -22,12 +22,12 @@ int main(){
     bib1.AddLivro(&livro2);
     bib1.AddUser(&usuario1);
     bib1.AddUser(&usuario2);
-    bib1.Emprestar({&livro1,&livro2},&usuario1,30,12,2021);
-    bib1.ShowAllBooks();
-    bib1.Devolucao({&livro1,&livro2},&usuario1,"02/12/2021");
+    bib1.Emprestar({&livro1,&livro2},&usuario1,30,01,2021);
+    //bib1.Devolucao({&livro1,&livro2},&usuario1,"02/12/2021");
     bib1.ShowAllBooks();
     bib1.ShowAllUsers();
     cout << livro1.get_dataEmprestadoInicio() << endl;
-    cout << livro1.get_dataEmprestadoFim();
+    cout << livro1.get_dataEmprestadoFim() << endl;
+    bib1.Devolucao({&livro1},&usuario1,1,3,2021);
     return 0;
 }

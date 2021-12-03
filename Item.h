@@ -7,6 +7,7 @@ using namespace std;
 class Item 
 {
     friend class Usuario;
+    friend class Biblioteca;
 private:
     string nome;
     string autor;
@@ -31,8 +32,8 @@ public:
     int get_emprestado();
     int get_num_paginas();
     int get_ano_lancamento();
-    int get_dataEmprestadoInicio();
-    int get_dataEmprestadoFim();
+    string get_dataEmprestadoInicio();
+    string get_dataEmprestadoFim();
 };
 
 

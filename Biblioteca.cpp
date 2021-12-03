@@ -84,7 +84,11 @@ void Biblioteca::DeleteUser(Usuario *usuario){
 
 }
 void Biblioteca::Emprestar(vector<Livro *> livros, Usuario *usuario, int d, int m, int a){
-    for (size_t i = 0; i < livros.size(); ++i){
+    if (Adimplencia(usuario, d, m, a)){
+        cout << "Você tem livros pedentes com atraso, portanto não é possível fazer outro empréstimo" << endl;
+    }
+    else{
+        for (size_t i = 0; i < livros.size(); ++i){
         Data* dataInicio = new Data;
         Data* dataFim = new Data;
         usuario->add_livro_emprestado(livros[i]);
@@ -94,23 +98,50 @@ void Biblioteca::Emprestar(vector<Livro *> livros, Usuario *usuario, int d, int 
         int diaf = d;
         if (m+1 > 12){
             anof= a+1;
+            mesf = 1;
         }
-        if (m+1 == 2 && d >29){
+        if (m+1 == 2 && d >28){
             mesf = m+2;
-            diaf = d-30;
+            diaf = 31-d;
+        }
+        else{
+            mesf = m+1;
         }
         livros[i]->data_emprestado_fim(dataFim,diaf,mesf,anof);
+
+    }
+    cout << "Livro(s) emprestados com sucesso" << endl;
+    
     }
     
 }
-void Biblioteca::Devolucao(vector<Livro *> livros, Usuario *usuario, string data){
+void Biblioteca::Devolucao(vector<Livro *> livros, Usuario *usuario, int d, int m , int a){
     for (size_t i = 0; i < livros.size(); ++i){
+    Data* dataInicio = new Data;
+    Data* dataFim = new Data;
     usuario->remove_livro_emprestado(livros[i]);
+    livros[i]->data_emprestado_inicio(dataInicio,0,0,0);
+    livros[i]->data_emprestado_fim(dataFim,0,0,0);
     }
+    cout << "Livro(s) devolvidos com sucesso" << endl;
 }
 
-void Biblioteca::Adimplencia(Usuario usuario){
+bool Biblioteca::Adimplencia(Usuario *usuario, int d, int m, int a){
+    for (size_t i = 0; i < usuario->livrosemprestados.size(); ++i){
+        if (a > (usuario->livrosemprestados[i]->dataEmprestadoFim->get_ano())){
+            return true;
+        }
+        else if (m > (usuario->livrosemprestados[i]->dataEmprestadoFim->get_mes())){
+            return true;
+        }
+        else if (d > (usuario->livrosemprestados[i]->dataEmprestadoFim->get_dia())){
+            return true;
+        }
+        else{
+            return false;
+        }
 
+}
 }
 void Biblioteca::relatorio_estatistico(){
 

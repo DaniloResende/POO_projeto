@@ -34,7 +34,7 @@ void Item::data_emprestado_inicio(Data *data_inicio, int dd, int mm, int aa){
 }
 
 void Item::data_emprestado_fim(Data *data_final, int dd, int mm, int aa){
-        dataEmprestadoFim = data_final;
+    dataEmprestadoFim = data_final;
     data_final->set_dia(dd);
     data_final->set_mes(mm);
     data_final->set_ano(aa);
@@ -60,11 +60,12 @@ int Item::get_ano_lancamento(){
     return ano_lancamento;
 }
 
-int Item::get_dataEmprestadoInicio(){
-    return dataEmprestadoInicio->get_dia();
+string Item::get_dataEmprestadoInicio(){
+    string data = to_string(dataEmprestadoInicio->get_dia()) + '/' + to_string(dataEmprestadoInicio->get_mes()) + '/' + to_string(dataEmprestadoInicio->get_ano());
+    return data;
 }
 
-int Item::get_dataEmprestadoFim(){
-    int data = dataEmprestadoFim->get_dia();
+string Item::get_dataEmprestadoFim(){
+    string data = to_string(dataEmprestadoFim->get_dia()) + '/' + to_string(dataEmprestadoFim->get_mes()) + '/' + to_string(dataEmprestadoFim->get_ano());
     return data;
 }
