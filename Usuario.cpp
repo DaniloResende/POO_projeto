@@ -24,6 +24,18 @@ string Usuario::get_datanascimento(){
     return datanascimento;
 }
 
+void Usuario::set_nome(string p_nome){
+    nome = p_nome;
+}
+
+void Usuario::set_cpf(string p_cpf){
+    cpf = p_cpf;
+}
+
+void Usuario::set_datanascimento(string p_datanascimento){
+    datanascimento = p_datanascimento;
+}
+
 void Usuario::livrosemprestadosUsuario(){
     for (size_t i = 0; i < livrosemprestados.size(); ++i) {
         cout << livrosemprestados[i]->get_nome() << " ";

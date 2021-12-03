@@ -59,7 +59,12 @@ void Biblioteca::ShowAllBooks(){
 
 }
 
-void Biblioteca::UpdateLivro(Livro livro){
+void Biblioteca::UpdateLivro(Livro *livro, string nome , string autor, int num_paginas , string genero , string editora){
+    livro->set_nome(nome);
+    livro->set_autor(autor);
+    livro->set_numero_paginas(num_paginas);
+    livro->set_genero(genero);
+    livro->set_editora(editora);
 
 }
 void Biblioteca::DeleteLivro(Livro *livro){
@@ -71,7 +76,10 @@ void Biblioteca::DeleteLivro(Livro *livro){
 }
 
 
-void Biblioteca::UpdateUser(Usuario usuario){
+void Biblioteca::UpdateUser(Usuario *usuario, string cpf, string nome, string datanascimento){
+    usuario->set_nome(nome);
+    usuario->set_cpf(cpf);
+    usuario->set_datanascimento(datanascimento);
 
 }
 

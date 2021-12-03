@@ -20,4 +20,7 @@ public:
    string get_cpf();
    string get_nome();
    string get_datanascimento();
+   void set_cpf(string p_cpf);
+   void set_nome(string p_nome);
+   void set_datanascimento(string p_datanascimento);
 };
