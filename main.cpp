@@ -1,8 +1,12 @@
 #include "Biblioteca.h"
 #include <iostream>
 
+
+
 int main(){
     Livro livro1, livro2;
+    Monografia monografia1;
+    monografia1.set_nome("TCC");
     livro1.set_nome("NELSON");
     livro1.set_autor("nelson");
     livro1.set_ano_lancamento(1990);
@@ -22,10 +26,9 @@ int main(){
     bib1.AddLivro(&livro2);
     bib1.AddUser(&usuario1);
     bib1.AddUser(&usuario2);
-    bib1.Emprestar({&livro1,&livro2},&usuario1,30,01,2021);
-    //bib1.Devolucao({&livro1,&livro2},&usuario1,"02/12/2021");
+    bib1.Emprestar({&livro1,&livro2,&monografia1},&usuario1,30,01,2021);
     bib1.ShowAllUsers();
-    bib1.UpdateUser(&usuario1,"0093556634","nelsinho","12/10/1998");
+    bib1.Devolucao({&livro1,&livro2},&usuario1,1,2,2021);
     bib1.ShowAllUsers();
     return 0;
 }

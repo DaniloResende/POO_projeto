@@ -1,11 +1,14 @@
+#ifndef MONOGRAFIA_H
+#define MONOGRAFIA_H
 #include<string>
 #include<vector>
 #include "Item.h"
 
+
+
 using namespace std;
 
-class Monografia : public Item
-{
+class Monografia : public Item{
 private:
 string orientador;
 string curso;
@@ -23,3 +26,5 @@ public:
    string get_instituicao(string p_instituicao);
    string get_tema(string p_tema);
 };
+
+#endif

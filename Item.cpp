@@ -69,3 +69,11 @@ string Item::get_dataEmprestadoFim(){
     string data = to_string(dataEmprestadoFim->get_dia()) + '/' + to_string(dataEmprestadoFim->get_mes()) + '/' + to_string(dataEmprestadoFim->get_ano());
     return data;
 }
+
+char Item::get_type(){
+    return type;
+}
+
+void Item::set_type(char t){
+    type = t;
+}

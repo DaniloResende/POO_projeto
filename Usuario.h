@@ -1,4 +1,9 @@
+
 #include "Livro.h"
+#include "Monografia.h"
+#include "Periodico.h"
+
+
 
 using namespace std;
 
@@ -10,13 +15,21 @@ private:
    string cpf;
    string nome;
    string datanascimento;
-   vector<Livro *> livrosemprestados;
+   vector<Item *> livrosemprestados;
+   vector<Item *> monografiasemprestadas;
+   vector<Item *> periodicosemprestados;
 public:
    Usuario(string p_cpf, string p_nome, string p_datanascimento);
    ~Usuario();
    void livrosemprestadosUsuario();//determina quais livros estao com o usuario
-   void add_livro_emprestado(Livro *livro);
-   void remove_livro_emprestado(Livro *livro);
+   void monografiasemprestadasUsuario();//determina quais monografias estao com o usuario
+   void periodicosemprestadosUsuario();//determina quais periodicos estao com o usuario
+   void add_livro_emprestado(Item *item);
+   void remove_livro_emprestado(Item *item);
+   void add_periodico_emprestado(Item *item);
+   void remove_periodico_emprestado(Item *item);
+   void add_monografia_emprestada(Item *item);
+   void remove_monografia_emprestada(Item *item);
    string get_cpf();
    string get_nome();
    string get_datanascimento();

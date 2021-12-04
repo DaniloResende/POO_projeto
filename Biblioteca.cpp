@@ -1,7 +1,10 @@
 #include "Biblioteca.h"
 #include <iostream>
 
-
+template<typename Base, typename T>
+inline bool instanceof(const T*) {
+   return is_base_of<Base, T>::value;
+}
  
 Biblioteca::Biblioteca(/* args */){}
  
@@ -42,6 +45,10 @@ void Biblioteca::ReadUsuario(Usuario *usuario){
     cout << "Data de nascimento: " << usuario->get_datanascimento() << endl;
     cout << "Livros emprestados: ";
     usuario->livrosemprestadosUsuario();
+    cout << "Monografias emprestadas: ";
+    usuario->monografiasemprestadasUsuario();
+    cout << "Periódicos emprestados: ";
+    usuario->periodicosemprestadosUsuario();
 
 }
 void Biblioteca::ShowAllUsers(){
@@ -91,16 +98,24 @@ void Biblioteca::DeleteUser(Usuario *usuario){
     }
 
 }
-void Biblioteca::Emprestar(vector<Livro *> livros, Usuario *usuario, int d, int m, int a){
+void Biblioteca::Emprestar(vector<Item *> itens, Usuario *usuario, int d, int m, int a){
     if (Adimplencia(usuario, d, m, a)){
-        cout << "Você tem livros pedentes com atraso, portanto não é possível fazer outro empréstimo" << endl;
+        cout << "Você tem itens pedentes com atraso, portanto não é possível fazer outro empréstimo" << endl;
     }
     else{
-        for (size_t i = 0; i < livros.size(); ++i){
+        for (size_t i = 0; i < itens.size(); ++i){
         Data* dataInicio = new Data;
         Data* dataFim = new Data;
-        usuario->add_livro_emprestado(livros[i]);
-        livros[i]->data_emprestado_inicio(dataInicio,d,m,a);
+        if (itens[i]->get_type() == 'l'){
+            usuario->add_livro_emprestado(itens[i]);
+        }
+        else if (itens[i]->get_type() == 'P'){
+            usuario->add_periodico_emprestado(itens[i]);
+        }
+        else if (itens[i]->get_type() == 'm'){
+            usuario->add_monografia_emprestada(itens[i]);
+        }
+        itens[i]->data_emprestado_inicio(dataInicio,d,m,a);
         int anof = a;
         int mesf = m;
         int diaf = d;
@@ -115,23 +130,31 @@ void Biblioteca::Emprestar(vector<Livro *> livros, Usuario *usuario, int d, int 
         else{
             mesf = m+1;
         }
-        livros[i]->data_emprestado_fim(dataFim,diaf,mesf,anof);
+        itens[i]->data_emprestado_fim(dataFim,diaf,mesf,anof);
 
     }
-    cout << "Livro(s) emprestados com sucesso" << endl;
+    cout << "Item(ns) emprestados com sucesso" << endl;
     
     }
     
 }
-void Biblioteca::Devolucao(vector<Livro *> livros, Usuario *usuario, int d, int m , int a){
+void Biblioteca::Devolucao(vector<Item *> itens, Usuario *usuario, int d, int m , int a){
     for (size_t i = 0; i < livros.size(); ++i){
     Data* dataInicio = new Data;
     Data* dataFim = new Data;
-    usuario->remove_livro_emprestado(livros[i]);
-    livros[i]->data_emprestado_inicio(dataInicio,0,0,0);
-    livros[i]->data_emprestado_fim(dataFim,0,0,0);
+    if (itens[i]->get_type() == 'l'){
+            usuario->remove_livro_emprestado(itens[i]);
+        }
+    else if (itens[i]->get_type() == 'p'){
+            usuario->remove_periodico_emprestado(itens[i]);
+        }
+    else if (itens[i]->get_type() == 'm'){
+            usuario->remove_monografia_emprestada(itens[i]);
+        }
+    itens[i]->data_emprestado_inicio(dataInicio,0,0,0);
+    itens[i]->data_emprestado_fim(dataFim,0,0,0);
     }
-    cout << "Livro(s) devolvidos com sucesso" << endl;
+    cout << "Item(ns) devolvidos com sucesso" << endl;
 }
 
 bool Biblioteca::Adimplencia(Usuario *usuario, int d, int m, int a){

@@ -1,9 +1,12 @@
-#include <string>
-#include "Item.h"
-using namespace std;
+#ifndef PERIODICO_H
+#define PERIODICO_H
 
-class Periodico : public Item
-{
+#include <string>
+using namespace std;
+#include "Item.h"
+
+
+class Periodico : public Item{
    friend class Usuario;
 private:
    string edicao;
@@ -20,4 +23,4 @@ public:
    string get_editora();
 };
 
-
+#endif

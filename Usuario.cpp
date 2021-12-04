@@ -43,17 +43,60 @@ void Usuario::livrosemprestadosUsuario(){
     cout << endl;
 }
 
-
-void Usuario::add_livro_emprestado(Livro *livro){
-    livrosemprestados.push_back(livro);
-    livro->set_emprestado(1);
+void Usuario::periodicosemprestadosUsuario(){
+    for (size_t i = 0; i < periodicosemprestados.size(); ++i) {
+        cout << periodicosemprestados[i]->get_nome() << " ";
+    }
+    cout << endl;
 }
 
-void Usuario::remove_livro_emprestado(Livro *livro){
+void Usuario::monografiasemprestadasUsuario(){
+    for (size_t i = 0; i < monografiasemprestadas.size(); ++i) {
+        cout << monografiasemprestadas[i]->get_nome() << " ";
+    }
+    cout << endl;
+}
+
+
+
+void Usuario::add_livro_emprestado(Item *item){
+    livrosemprestados.push_back(item);
+    item->set_emprestado(1);
+}
+
+void Usuario::remove_livro_emprestado(Item *item){
     for (size_t i = 0; i < livrosemprestados.size(); ++i){
-        if (livrosemprestados[i]->get_nome() == livro->get_nome() && livrosemprestados[i]->get_autor() == livro->get_autor()){
+        if (livrosemprestados[i]->get_nome() == item->get_nome() && livrosemprestados[i]->get_autor() == item->get_autor()){
             livrosemprestados.erase(livrosemprestados.begin()+i);
-            livro->set_emprestado(0);
+            item->set_emprestado(0);
+        }
+    }
+}
+
+void Usuario::add_periodico_emprestado(Item *item){
+    periodicosemprestados.push_back(item);
+    item->set_emprestado(1);
+}
+
+void Usuario::remove_periodico_emprestado(Item *item){
+    for (size_t i = 0; i < periodicosemprestados.size(); ++i){
+        if (periodicosemprestados[i]->get_nome() == item->get_nome() && periodicosemprestados[i]->get_autor() == item->get_autor()){
+            periodicosemprestados.erase(periodicosemprestados.begin()+i);
+            item->set_emprestado(0);
+        }
+    }
+}
+
+void Usuario::add_monografia_emprestada(Item *item){
+    monografiasemprestadas.push_back(item);
+    item->set_emprestado(1);
+}
+
+void Usuario::remove_monografia_emprestada(Item *item){
+    for (size_t i = 0; i < monografiasemprestadas.size(); ++i){
+        if (monografiasemprestadas[i]->get_nome() == item->get_nome() && monografiasemprestadas[i]->get_autor() == item->get_autor()){
+            monografiasemprestadas.erase(monografiasemprestadas.begin()+i);
+            item->set_emprestado(0);
         }
     }
 }

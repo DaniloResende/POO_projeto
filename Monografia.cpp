@@ -3,7 +3,9 @@
 
 using namespace std;
 
-Monografia::Monografia(/* args */){}
+Monografia::Monografia(/* args */){
+    set_type('m');
+}
 
 Monografia::~Monografia(){}
 
