@@ -2,7 +2,13 @@
 #include "Item.h"
 #include <iostream>
 
-Item::Item(){}
+Item::Item(){
+    set_numero_paginas(0);
+    set_emprestado(0);
+    set_ano_lancamento(0000);
+    set_nome("Não informado");
+    set_autor("Não informado");
+    }
  
 Item::~Item(){}
 

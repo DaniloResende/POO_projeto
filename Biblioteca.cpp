@@ -12,6 +12,14 @@ void Biblioteca::AddLivro(Livro *livro){
     livros.push_back(livro);
 }
 
+void Biblioteca::AddMonografia(Monografia *monografia){
+    monografias.push_back(monografia);
+}
+
+void Biblioteca:: AddPeriodico(Periodico *periodico){
+    periodicos.push_back(periodico);
+}
+
 void Biblioteca::AddUser(Usuario *usuario){
     usuarios.push_back(usuario);
 }
@@ -30,12 +38,39 @@ void Biblioteca::ReadLivro(Livro *livro){
         cout << "Emprestado: " << resp << endl;
     }
     cout << "Genero: " << livro->get_genero()<< endl;
+    cout << "Editora: " << livro->get_editora()<< endl;
     cout << "Número de páginas: " << livro->get_num_paginas()<< endl;
     cout << "Ano de lançamento: " << livro->get_ano_lancamento()<< endl;
-    cout << "Editora: " << livro->get_editora()<< endl;
     
 
 }
+
+void Biblioteca::ReadMonografia(Monografia *monografia){
+    cout << "Nome: " << monografia->get_nome() << endl;
+    cout << "Autor: " << monografia->get_autor()<< endl;
+    if (monografia->get_emprestado() == 1)
+    {
+        string resp = "Sim";
+        cout << "Emprestada: " << resp << endl;
+    }
+    if (monografia->get_emprestado() == 0)
+    {
+        string resp = "Não";
+        cout << "Emprestada: " << resp << endl;
+    }
+    cout << "Orientador: " << monografia->get_orientador() << endl;
+    cout << "Curso: " << monografia->get_curso() << endl;
+    cout << "Instituição: " << monografia->get_instituicao() << endl;
+    cout << "Tema: " << monografia->get_tema() << endl;
+    cout << "Número de páginas: " << monografia->get_num_paginas()<< endl;
+    cout << "Ano de lançamento: " << monografia->get_ano_lancamento()<< endl;
+    
+
+}
+
+
+
+
 void Biblioteca::ReadUsuario(Usuario *usuario){
     cout << "Nome: " << usuario->get_nome() << endl;
     cout << "CPF: " << usuario->get_cpf() << endl;
@@ -62,6 +97,16 @@ void Biblioteca::ShowAllBooks(){
     }
 
 }
+
+void Biblioteca::ShowAllMono(){
+    for (size_t i = 0; i < monografias.size(); ++i){
+        ReadMonografia(monografias[i]);
+        cout << "--------------------------------------------------------------" << endl;
+        
+    }
+
+}
+
 
 void Biblioteca::UpdateLivro(Livro *livro, string nome , string autor, int num_paginas , string genero , string editora){
     livro->set_nome(nome);
@@ -131,6 +176,7 @@ void Biblioteca::Emprestar(vector<Item *> itens, Usuario *usuario, int d, int m,
 
     }
     cout << "Item(ns) emprestados com sucesso" << endl;
+    cout << "--------------------------------------------------------------" << endl;
     
     }
     
@@ -152,6 +198,7 @@ void Biblioteca::Devolucao(vector<Item *> itens, Usuario *usuario, int d, int m 
     itens[i]->data_emprestado_fim(dataFim,0,0,0);
     }
     cout << "Item(ns) devolvidos com sucesso" << endl;
+    cout << "--------------------------------------------------------------" << endl;
 }
 
 bool Biblioteca::Adimplencia(Usuario *usuario, int d, int m, int a){

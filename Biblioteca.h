@@ -7,14 +7,20 @@ class Biblioteca
 private:
    vector<Livro *> livros;
    vector<Usuario *> usuarios;
+   vector<Periodico *> periodicos;
+   vector<Monografia *> monografias;
 public:
    Biblioteca(/* args */);
    ~Biblioteca();
    //CRUD
    void AddLivro(Livro *livro);//poe livro(s) na biblioteca
    void AddUser(Usuario *usuario);
+   void AddMonografia(Monografia *monografia);
+   void AddPeriodico(Periodico *periodico);
+   void ReadMonografia(Monografia *monografia);
    void ReadLivro(Livro *livro);//consulta um livro  
    void ReadUsuario(Usuario *usuario);//consulta um usuario
+   void ShowAllMono();
    void ShowAllUsers();//mostra todos os usuarios da biblioteca
    void ShowAllBooks();//mostra todos os livros da biblioteca
    void UpdateLivro(Livro *livro, string nome , string autor, int num_paginas , string genero , string editora);

@@ -7,6 +7,7 @@ int main(){
     Livro livro1, livro2;
     Monografia monografia1;
     monografia1.set_nome("TCC");
+    monografia1.set_numero_paginas(29);
     livro1.set_nome("NELSON");
     livro1.set_autor("nelson");
     livro1.set_ano_lancamento(1990);
@@ -24,12 +25,12 @@ int main(){
     Biblioteca bib1;
     bib1.AddLivro(&livro1);
     bib1.AddLivro(&livro2);
+    bib1.AddMonografia(&monografia1);
     bib1.AddUser(&usuario1);
     bib1.AddUser(&usuario2);
     bib1.Emprestar({&livro1,&livro2,&monografia1},&usuario1,30,01,2021);
     bib1.ShowAllUsers();
-    bib1.ShowAllBooks();
     bib1.Devolucao({&livro1,&livro2},&usuario1,1,2,2021);
-    bib1.ShowAllBooks();
+    bib1.ShowAllMono();
     return 0;
 }
