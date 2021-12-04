@@ -39,6 +39,7 @@ public:
     string get_dataEmprestadoInicio();
     string get_dataEmprestadoFim();
     char get_type();
+    bool operator ==(const Item &item);
 };
 
 

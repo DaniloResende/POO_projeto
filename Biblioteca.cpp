@@ -1,10 +1,7 @@
 #include "Biblioteca.h"
 #include <iostream>
 
-template<typename Base, typename T>
-inline bool instanceof(const T*) {
-   return is_base_of<Base, T>::value;
-}
+
  
 Biblioteca::Biblioteca(/* args */){}
  
@@ -76,7 +73,7 @@ void Biblioteca::UpdateLivro(Livro *livro, string nome , string autor, int num_p
 }
 void Biblioteca::DeleteLivro(Livro *livro){
     for (size_t i = 0; i < livros.size(); ++i) {
-        if (livros[i]->get_nome() == livro->get_nome() ){
+        if (livros[i] == livro){
             livros.erase(livros.begin()+i);
         }
     }

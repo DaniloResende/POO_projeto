@@ -28,7 +28,8 @@ int main(){
     bib1.AddUser(&usuario2);
     bib1.Emprestar({&livro1,&livro2,&monografia1},&usuario1,30,01,2021);
     bib1.ShowAllUsers();
+    bib1.ShowAllBooks();
     bib1.Devolucao({&livro1,&livro2},&usuario1,1,2,2021);
-    bib1.ShowAllUsers();
+    bib1.ShowAllBooks();
     return 0;
 }

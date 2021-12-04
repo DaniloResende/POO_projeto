@@ -77,3 +77,12 @@ char Item::get_type(){
 void Item::set_type(char t){
     type = t;
 }
+
+bool Item::operator == (const Item &item){
+    if (nome == item.nome && autor == item.autor && num_paginas == item.num_paginas && ano_lancamento == item.ano_lancamento && emprestado==item.emprestado && type==item.type){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
