@@ -202,14 +202,14 @@ void Biblioteca::Devolucao(vector<Item *> itens, Usuario *usuario, int d, int m 
 }
 
 bool Biblioteca::Adimplencia(Usuario *usuario, int d, int m, int a){
-    for (size_t i = 0; i < usuario->livrosemprestados.size(); ++i){
-        if (a > (usuario->livrosemprestados[i]->dataEmprestadoFim->get_ano())){
+    for (size_t i = 0; i < usuario->itenstotais.size(); ++i){
+        if (a > (usuario->itenstotais[i]->dataEmprestadoFim->get_ano())){
             return true;
         }
-        else if (m > (usuario->livrosemprestados[i]->dataEmprestadoFim->get_mes())){
+        else if (m > (usuario->itenstotais[i]->dataEmprestadoFim->get_mes())){
             return true;
         }
-        else if (d > (usuario->livrosemprestados[i]->dataEmprestadoFim->get_dia())){
+        else if (d > (usuario->itenstotais[i]->dataEmprestadoFim->get_dia())){
             return true;
         }
         else{

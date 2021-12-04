@@ -18,6 +18,7 @@ private:
    vector<Item *> livrosemprestados;
    vector<Item *> monografiasemprestadas;
    vector<Item *> periodicosemprestados;
+   vector<Item *> itenstotais;
 public:
    Usuario(string p_cpf, string p_nome, string p_datanascimento);
    ~Usuario();

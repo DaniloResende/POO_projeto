@@ -61,42 +61,54 @@ void Usuario::monografiasemprestadasUsuario(){
 
 void Usuario::add_livro_emprestado(Item *item){
     livrosemprestados.push_back(item);
+    itenstotais.push_back(item);
     item->set_emprestado(1);
 }
 
 void Usuario::remove_livro_emprestado(Item *item){
-    for (size_t i = 0; i < livrosemprestados.size(); ++i){
-        if (livrosemprestados[i]->get_nome() == item->get_nome() && livrosemprestados[i]->get_autor() == item->get_autor()){
+    for (size_t i = 0; i < itenstotais.size(); ++i){
+        if (livrosemprestados[i]==item){
             livrosemprestados.erase(livrosemprestados.begin()+i);
             item->set_emprestado(0);
+        }
+        if (itenstotais[i]==item){
+            itenstotais.erase(itenstotais.begin()+i);
         }
     }
 }
 
 void Usuario::add_periodico_emprestado(Item *item){
     periodicosemprestados.push_back(item);
+    itenstotais.push_back(item);
     item->set_emprestado(1);
 }
 
 void Usuario::remove_periodico_emprestado(Item *item){
-    for (size_t i = 0; i < periodicosemprestados.size(); ++i){
-        if (periodicosemprestados[i]->get_nome() == item->get_nome() && periodicosemprestados[i]->get_autor() == item->get_autor()){
+    for (size_t i = 0; i < itenstotais.size(); ++i){
+        if (periodicosemprestados[i]==item){
             periodicosemprestados.erase(periodicosemprestados.begin()+i);
             item->set_emprestado(0);
+        }
+        if (itenstotais[i]==item){
+            itenstotais.erase(itenstotais.begin()+i);
         }
     }
 }
 
 void Usuario::add_monografia_emprestada(Item *item){
     monografiasemprestadas.push_back(item);
+    itenstotais.push_back(item);
     item->set_emprestado(1);
 }
 
 void Usuario::remove_monografia_emprestada(Item *item){
-    for (size_t i = 0; i < monografiasemprestadas.size(); ++i){
-        if (monografiasemprestadas[i]->get_nome() == item->get_nome() && monografiasemprestadas[i]->get_autor() == item->get_autor()){
+    for (size_t i = 0; i < itenstotais.size(); ++i){
+        if (monografiasemprestadas[i]==item){
             monografiasemprestadas.erase(monografiasemprestadas.begin()+i);
             item->set_emprestado(0);
+        }
+        if (itenstotais[i]==item){
+            itenstotais.erase(itenstotais.begin()+i);
         }
     }
 }

@@ -28,9 +28,9 @@ int main(){
     bib1.AddMonografia(&monografia1);
     bib1.AddUser(&usuario1);
     bib1.AddUser(&usuario2);
-    bib1.Emprestar({&livro1,&livro2,&monografia1},&usuario1,30,01,2021);
+    bib1.Emprestar({&livro1,&livro2},&usuario1,30,01,2021);
     bib1.ShowAllUsers();
-    bib1.Devolucao({&livro1,&livro2},&usuario1,1,2,2021);
+    bib1.Emprestar({&monografia1},&usuario1,3,3,2021);
     bib1.ShowAllMono();
     return 0;
 }
