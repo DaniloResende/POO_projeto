@@ -194,11 +194,16 @@ void Biblioteca::Devolucao(vector<Item *> itens, Usuario *usuario, int d, int m 
     else if (itens[i]->get_type() == 'm'){
             usuario->remove_monografia_emprestada(itens[i]);
         }
+    if (Adimplencia(usuario, d, m, a)){
+        cout << "Item(ns) entregue(s) com atraso" << endl;
+    }
+    else{
+        cout << "Item(ns) devolvidos com sucesso" << endl;
+        cout << "--------------------------------------------------------------" << endl;
     itens[i]->data_emprestado_inicio(dataInicio,0,0,0);
     itens[i]->data_emprestado_fim(dataFim,0,0,0);
     }
-    cout << "Item(ns) devolvidos com sucesso" << endl;
-    cout << "--------------------------------------------------------------" << endl;
+    }
 }
 
 bool Biblioteca::Adimplencia(Usuario *usuario, int d, int m, int a){
