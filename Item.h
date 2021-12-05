@@ -18,6 +18,7 @@ private:
     Data* dataEmprestadoInicio;
     Data* dataEmprestadoFim;
     int emprestado; //1=emprestado; 0=não esta emprestado
+    int reservado;
     char type;
 public:
     Item(/* args */);
@@ -25,6 +26,7 @@ public:
     void set_nome(string p_nome);
     void set_autor(string p_autor);
     void set_emprestado(int p_emprestado);
+    void set_reservado(int p_reservado);
     void set_numero_paginas(int p_num_paginas);
     void set_ano_lancamento(int p_ano_lancamento);
     void set_quantidade(int p_quantidade);
@@ -34,6 +36,7 @@ public:
     string get_nome();
     string get_autor();
     int get_emprestado();
+    int get_reservado();
     int get_num_paginas();
     int get_ano_lancamento();
     string get_dataEmprestadoInicio();

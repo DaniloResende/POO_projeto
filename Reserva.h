@@ -1,5 +1,5 @@
 #include <string>
-#include "Usuario.h"
+#include "Biblioteca.h"
 
 using namespace std;
 
@@ -9,7 +9,7 @@ private:
     Usuario* user_reserva;
     Item* item_reservado;
 public:
-   Reserva(/* args */);
+   Reserva(Usuario *usuario,Item *item);
    ~Reserva();
    void set_user(Usuario *p_user_reserva);
    void set_item(Item *p_item_reservado);

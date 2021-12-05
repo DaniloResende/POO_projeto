@@ -1,5 +1,6 @@
 #include "Biblioteca.h"
 #include <iostream>
+#include "Reserva.h"
 
 
 
@@ -32,5 +33,8 @@ int main(){
     bib1.ShowAllUsers();
     bib1.Devolucao({&livro1},&usuario1,3,3,2021);
     bib1.ShowAllMono();
+    Reserva reserva1(&usuario1,&monografia1);
+    cout << reserva1.get_user() << endl;
+    cout << reserva1.get_item() << endl;
     return 0;
 }

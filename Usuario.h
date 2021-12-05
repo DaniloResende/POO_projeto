@@ -1,4 +1,5 @@
-
+#ifndef USUARIO_H
+#define USUARIO_H
 #include "Livro.h"
 #include "Monografia.h"
 #include "Periodico.h"
@@ -38,3 +39,4 @@ public:
    void set_nome(string p_nome);
    void set_datanascimento(string p_datanascimento);
 };
+#endif

@@ -1,4 +1,7 @@
+#ifndef BIBLIOTECA_H
+#define BIBLIOTECA_H
 #include "Usuario.h"
+
 
 using namespace std;
 
@@ -32,6 +35,6 @@ public:
    bool Adimplencia(Usuario *usuario, int d, int m, int a);//ver se o usuario possui algum livro em que ja se passou o prazo para entregar. Se sim, nao podera pegar outro livro emprestado
    void relatorio_estatistico();
 };
-
+#endif
 
 

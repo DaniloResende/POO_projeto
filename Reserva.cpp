@@ -2,7 +2,12 @@
 #include<string>
 using namespace std;
 
-Reserva::Reserva(/* args */){}
+Reserva::Reserva(Usuario *usuario,Item *item)
+{
+    set_user(usuario);
+    set_item(item);
+    item->set_reservado(1);
+}
 Reserva::~Reserva(){}
 void Reserva::set_user(Usuario *p_user_reserva)
 {

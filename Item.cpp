@@ -5,6 +5,7 @@
 Item::Item(){
     set_numero_paginas(0);
     set_emprestado(0);
+    set_reservado(0);
     set_ano_lancamento(0000);
     set_nome("Não informado");
     set_autor("Não informado");
@@ -22,6 +23,10 @@ void Item::set_autor(string p_autor){
 
 void Item::set_emprestado(int p_emprestado){
     emprestado = p_emprestado;
+}
+
+void Item::set_reservado(int p_reservado){
+    reservado = p_reservado;
 }
 
 void Item::set_numero_paginas(int p_num_paginas){
@@ -56,6 +61,10 @@ string Item::get_autor(){
 
 int Item::get_emprestado(){
     return emprestado;
+}
+
+int Item::get_reservado(){
+    return reservado;
 }
 
 int Item::get_num_paginas(){

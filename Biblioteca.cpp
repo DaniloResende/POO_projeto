@@ -182,7 +182,7 @@ void Biblioteca::Emprestar(vector<Item *> itens, Usuario *usuario, int d, int m,
     
 }
 void Biblioteca::Devolucao(vector<Item *> itens, Usuario *usuario, int d, int m , int a){
-    for (size_t i = 0; i < livros.size(); ++i){
+    for (size_t i = 0; i < itens.size(); ++i){
     Data* dataInicio = new Data;
     Data* dataFim = new Data;
     if (itens[i]->get_type() == 'l'){
