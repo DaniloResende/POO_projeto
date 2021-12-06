@@ -2,6 +2,7 @@
 #include <iostream>
 
 
+
  
 Biblioteca::Biblioteca(/* args */){}
  
@@ -36,6 +37,16 @@ void Biblioteca::ReadLivro(Livro *livro){
     {
         string resp = "Não";
         cout << "Emprestado: " << resp << endl;
+    }
+    if (livro->get_reservado() == 1)
+    {
+        string resp2 = "Sim";
+        cout << "Reservado: " << resp2 << endl;
+    }
+    if (livro->get_reservado() == 0)
+    {
+        string resp2 = "Não";
+        cout << "Reservado: " << resp2 << endl;
     }
     cout << "Genero: " << livro->get_genero()<< endl;
     cout << "Editora: " << livro->get_editora()<< endl;
@@ -124,6 +135,13 @@ void Biblioteca::DeleteLivro(Livro *livro){
     }
 }
 
+void Biblioteca::DeleteReserva(Reserva *reserva){
+    for (size_t i = 0; i < reservas.size(); ++i) {
+        if (reservas[i] == reserva){
+            reservas.erase(reservas.begin()+i);
+        }
+    }
+}
 
 void Biblioteca::UpdateUser(Usuario *usuario, string cpf, string nome, string datanascimento){
     usuario->set_nome(nome);
@@ -140,6 +158,33 @@ void Biblioteca::DeleteUser(Usuario *usuario){
     }
 
 }
+
+void Biblioteca::Reservar(vector<Item *> itens, Usuario *usuario){
+    for (size_t i = 0; i< itens.size(); ++i){
+        Reserva* reserva1 = new Reserva(usuario,itens[i]);
+        reservas.push_back(reserva1);
+    }
+}
+
+bool Biblioteca::CheckReserva(Usuario *usuario, Item* item){
+    for (size_t i = 0; i< reservas.size(); ++i){
+        if (usuario->get_cpf() == reservas[i]->get_user() && item == reservas[i]->get_item()){
+            return true;
+        }
+
+}
+    return false;
+}
+
+Reserva* Biblioteca::RetReserva(Usuario *usuario, Item* item){
+    for (size_t i = 0; i< reservas.size(); ++i){
+        if (usuario->get_cpf() == reservas[i]->get_user() && item == reservas[i]->get_item()){
+            return reservas[i];
+        }
+    }
+    return 0;
+}
+
 void Biblioteca::Emprestar(vector<Item *> itens, Usuario *usuario, int d, int m, int a){
     if (Adimplencia(usuario, d, m, a)){
         cout << "Você tem itens pedentes com atraso, portanto não é possível fazer outro empréstimo" << endl;
@@ -148,6 +193,13 @@ void Biblioteca::Emprestar(vector<Item *> itens, Usuario *usuario, int d, int m,
         for (size_t i = 0; i < itens.size(); ++i){
         Data* dataInicio = new Data;
         Data* dataFim = new Data;
+        if (itens[i]->get_reservado() == 1 && CheckReserva(usuario,itens[i])==0){
+            cout << "O item de nome " << itens[i]->get_nome()<< " se encontra reservado, portanto não é  possível realizar o empréstimo" << endl;
+        }
+        if (itens[i]->get_emprestado()==1){
+            cout << "O item de nome " << itens[i]-> get_nome() << " já está emprestado, portanto não é possível realizar o empréstimo" << endl;
+        }
+        else{
         if (itens[i]->get_type() == 'l'){
             usuario->add_livro_emprestado(itens[i]);
         }
@@ -156,6 +208,10 @@ void Biblioteca::Emprestar(vector<Item *> itens, Usuario *usuario, int d, int m,
         }
         else if (itens[i]->get_type() == 'm'){
             usuario->add_monografia_emprestada(itens[i]);
+        }
+        if (itens[i]->get_reservado() == 1 && CheckReserva(usuario,itens[i])==1){
+            itens[i]->set_reservado(0);
+            DeleteReserva(RetReserva(usuario,itens[i]));
         }
         itens[i]->data_emprestado_inicio(dataInicio,d,m,a);
         int anof = a;
@@ -173,14 +229,12 @@ void Biblioteca::Emprestar(vector<Item *> itens, Usuario *usuario, int d, int m,
             mesf = m+1;
         }
         itens[i]->data_emprestado_fim(dataFim,diaf,mesf,anof);
-
-    }
-    cout << "Item(ns) emprestados com sucesso" << endl;
+    cout << "Item emprestado com sucesso" << endl;
     cout << "--------------------------------------------------------------" << endl;
-    
+        }
     }
-    
-}
+    }
+}   
 void Biblioteca::Devolucao(vector<Item *> itens, Usuario *usuario, int d, int m , int a){
     for (size_t i = 0; i < itens.size(); ++i){
     Data* dataInicio = new Data;
@@ -195,10 +249,10 @@ void Biblioteca::Devolucao(vector<Item *> itens, Usuario *usuario, int d, int m 
             usuario->remove_monografia_emprestada(itens[i]);
         }
     if (Adimplencia(usuario, d, m, a)){
-        cout << "Item(ns) entregue(s) com atraso" << endl;
+        cout << "Item entregue com atraso" << endl;
     }
     else{
-        cout << "Item(ns) devolvidos com sucesso" << endl;
+        cout << "Item devolvido com sucesso" << endl;
         cout << "--------------------------------------------------------------" << endl;
     itens[i]->data_emprestado_inicio(dataInicio,0,0,0);
     itens[i]->data_emprestado_fim(dataFim,0,0,0);
@@ -217,13 +271,14 @@ bool Biblioteca::Adimplencia(Usuario *usuario, int d, int m, int a){
         else if (d > (usuario->itenstotais[i]->dataEmprestadoFim->get_dia())){
             return true;
         }
-        else{
-            return false;
-        }
-
 }
+    return false;
 }
 void Biblioteca::relatorio_estatistico(){
-
+    int total_reservas = 0;
+    for (size_t i = 0; i < reservas.size(); ++i){
+        total_reservas+=1;
+    }
+    cout << "Reservas totais: " << total_reservas << endl;
 }
 
