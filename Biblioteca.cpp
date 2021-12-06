@@ -6,8 +6,7 @@
 Biblioteca::Biblioteca(/* args */){}
  
 Biblioteca::~Biblioteca(){}
-
-                      
+   
 void Biblioteca::AddLivro(Livro *livro){
     livros.push_back(livro);
 }
