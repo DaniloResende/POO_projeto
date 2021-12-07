@@ -261,6 +261,7 @@ void Biblioteca::Emprestar(vector<Item *> itens, Usuario *usuario, int d, int m,
         }
         itens[i]->data_emprestado_fim(dataFim,diaf,mesf,anof);
     cout << "Item emprestado com sucesso" << endl;
+    cout << "Data de entrega: " << itens[i]->get_dataEmprestadoFim() << endl;
     cout << "--------------------------------------------------------------" << endl;
         }
     }
@@ -271,6 +272,8 @@ void Biblioteca::Devolucao(vector<Item *> itens, Usuario *usuario, int d, int m 
     DeleteEmprestimo(RetEmprestimo(usuario,itens[i]));
     Data* dataInicio = new Data;
     Data* dataFim = new Data;
+    itens[i]->data_emprestado_inicio(dataInicio,0,0,0);
+    itens[i]->data_emprestado_fim(dataFim,0,0,0);
     if (itens[i]->get_type() == 'l'){
         usuario->remove_livro_emprestado(itens[i]);
         }
@@ -288,8 +291,6 @@ void Biblioteca::Devolucao(vector<Item *> itens, Usuario *usuario, int d, int m 
          cout << "Item devolvido com sucesso" << endl;
          cout << "--------------------------------------------------------------" << endl;
     }
-    itens[i]->data_emprestado_inicio(dataInicio,0,0,0);
-    itens[i]->data_emprestado_fim(dataFim,0,0,0);
     }
 }
 
