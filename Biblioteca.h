@@ -2,11 +2,7 @@
 #define BIBLIOTECA_H
 #include "Usuario.h"
 #include "Reserva.h"
-<<<<<<< HEAD
 #include "Emprestimo.h"
-=======
-
->>>>>>> 875e68d51021369451b89d85011baf72c5ce25f6
 
 using namespace std;
 
@@ -18,10 +14,7 @@ private:
    vector<Periodico *> periodicos;
    vector<Monografia *> monografias;
    vector<Reserva *> reservas;
-<<<<<<< HEAD
    vector<Emprestimo *> emprestimos;
-=======
->>>>>>> 875e68d51021369451b89d85011baf72c5ce25f6
 public:
    Biblioteca(/* args */);
    ~Biblioteca();
@@ -39,20 +32,13 @@ public:
    void UpdateLivro(Livro *livro, string nome , string autor, int num_paginas , string genero , string editora);
    void DeleteLivro(Livro *livro);
    void DeleteReserva(Reserva *reserva);
-<<<<<<< HEAD
    void DeleteEmprestimo(Emprestimo *emprestimo);
-=======
->>>>>>> 875e68d51021369451b89d85011baf72c5ce25f6
    void UpdateUser(Usuario *usuario, string cpf, string nome, string datanascimento);
    void DeleteUser(Usuario *usuario);
    void Reservar(vector<Item *> itens, Usuario *usuario);
    bool CheckReserva(Usuario *usuario, Item *item);
-<<<<<<< HEAD
    Reserva* RetReserva(Usuario *usuario, Item *item);
    Emprestimo* RetEmprestimo(Usuario *usuario, Item *item);
-=======
-   Reserva* RetReserva(Usuario *usuario, Item* item);
->>>>>>> 875e68d51021369451b89d85011baf72c5ce25f6
    void Emprestar(vector<Item *> itens, Usuario *usuario,int d, int m, int a);//empresta livro(s). O(s) livro(s) emprestado(s) passa/passam para status de emprestado e o usuario passa a ter o(s) livro(s) em seu historico de livros adquiridos da biblioteca. 
    void Devolucao(vector<Item *> itens, Usuario *usuario, int d, int m, int a);//Status do(s) livro(s) deixa/ deixam de ser emprestado e o usuario deixa de ter aquele(s) livro(s) em seu historico
    bool Adimplencia(Usuario *usuario, int d, int m, int a);//ver se o usuario possui algum livro em que ja se passou o prazo para entregar. Se sim, nao podera pegar outro livro emprestado
