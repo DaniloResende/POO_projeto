@@ -1,5 +1,9 @@
 #include "Biblioteca.h"
 #include <iostream>
+<<<<<<< HEAD
+=======
+#include "Reserva.h"
+>>>>>>> 875e68d51021369451b89d85011baf72c5ce25f6
 
 
 
@@ -28,6 +32,7 @@ int main(){
     bib1.AddMonografia(&monografia1);
     bib1.AddUser(&usuario1);
     bib1.AddUser(&usuario2);
+<<<<<<< HEAD
     bib1.Reservar({&monografia1},&usuario1);
     bib1.relatorio_estatistico();
     bib1.Emprestar({&livro1,&monografia1},&usuario1,30,01,2021);
@@ -39,5 +44,14 @@ int main(){
     bib1.Devolucao({&livro1,&livro2},&usuario1,30,3,2021);
     bib1.Emprestar({&livro1},&usuario2,20,4,2022);
     bib1.relatorio_estatistico();
+=======
+    bib1.Emprestar({&livro1,&livro2},&usuario1,30,01,2021);
+    bib1.ShowAllUsers();
+    bib1.Devolucao({&livro1},&usuario1,3,3,2021);
+    bib1.ShowAllMono();
+    Reserva reserva1(&usuario1,&monografia1);
+    cout << reserva1.get_user() << endl;
+    cout << reserva1.get_item() << endl;
+>>>>>>> 875e68d51021369451b89d85011baf72c5ce25f6
     return 0;
 }
