@@ -66,11 +66,13 @@ void Usuario::add_livro_emprestado(Item *item){
 }
 
 void Usuario::remove_livro_emprestado(Item *item){
-    for (size_t i = 0; i < itenstotais.size(); ++i){
+    for (size_t i = 0; i < livrosemprestados.size(); ++i){
         if (livrosemprestados[i]==item){
             livrosemprestados.erase(livrosemprestados.begin()+i);
             item->set_emprestado(0);
         }
+    }
+    for (size_t i = 0; i < itenstotais.size(); ++i){
         if (itenstotais[i]==item){
             itenstotais.erase(itenstotais.begin()+i);
         }
@@ -84,15 +86,18 @@ void Usuario::add_periodico_emprestado(Item *item){
 }
 
 void Usuario::remove_periodico_emprestado(Item *item){
-    for (size_t i = 0; i < itenstotais.size(); ++i){
+    for (size_t i = 0; i < periodicosemprestados.size(); ++i){
         if (periodicosemprestados[i]==item){
             periodicosemprestados.erase(periodicosemprestados.begin()+i);
             item->set_emprestado(0);
         }
+    }
+    for (size_t i = 0; i < itenstotais.size(); ++i){
         if (itenstotais[i]==item){
             itenstotais.erase(itenstotais.begin()+i);
         }
     }
+
 }
 
 void Usuario::add_monografia_emprestada(Item *item){
@@ -102,11 +107,13 @@ void Usuario::add_monografia_emprestada(Item *item){
 }
 
 void Usuario::remove_monografia_emprestada(Item *item){
-    for (size_t i = 0; i < itenstotais.size(); ++i){
+    for (size_t i = 0; i < monografiasemprestadas.size(); ++i){
         if (monografiasemprestadas[i]==item){
             monografiasemprestadas.erase(monografiasemprestadas.begin()+i);
             item->set_emprestado(0);
         }
+    }
+    for (size_t i = 0; i < itenstotais.size(); ++i){
         if (itenstotais[i]==item){
             itenstotais.erase(itenstotais.begin()+i);
         }

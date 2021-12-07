@@ -1,5 +1,8 @@
+#ifndef RESERVA_H
+#define RESERVA_H
 #include <string>
-#include "Biblioteca.h"
+#include "Usuario.h"
+#include "Item.h"
 
 using namespace std;
 
@@ -14,5 +17,6 @@ public:
    void set_user(Usuario *p_user_reserva);
    void set_item(Item *p_item_reservado);
    string get_user();
-   string get_item();
+   Item* get_item();
 };
+#endif

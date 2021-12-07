@@ -19,9 +19,9 @@ void Reserva::set_item(Item *p_item_reservado)
 }
 string Reserva::get_user()
 {
-    return user_reserva->get_nome();
+    return user_reserva->get_cpf();
 }
-string Reserva::get_item()
+Item* Reserva::get_item()
 {
-    return item_reservado->get_nome();
+    return item_reservado;
 }
