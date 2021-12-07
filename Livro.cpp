@@ -1,6 +1,8 @@
 #include "Livro.h"
 
-Livro::Livro(){}
+Livro::Livro(){
+    set_type('l');
+}
  
 Livro::~Livro(){}
 
@@ -19,3 +21,4 @@ string Livro::get_genero(){
 string Livro::get_editora(){
     return editora;
 }
+

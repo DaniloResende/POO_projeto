@@ -1,3 +1,5 @@
+#ifndef LIVRO_H
+#define LIVRO_H
 #include<string>
 #include<vector>
 #include "Item.h"
@@ -18,3 +20,5 @@ public:
    string get_genero();
    string get_editora();
 };
+
+#endif

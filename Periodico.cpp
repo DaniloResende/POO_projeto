@@ -1,6 +1,8 @@
 #include "Periodico.h"
 
-Periodico::Periodico(){};
+Periodico::Periodico(){
+    set_type('p');
+};
 
 Periodico::~Periodico(){};
 
@@ -31,4 +33,3 @@ string Periodico::get_editora()
     return editora;
 }
     
-
