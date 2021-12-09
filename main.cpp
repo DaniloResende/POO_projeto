@@ -15,6 +15,7 @@ int main(){
     Livro livro9("Fahrenheit 451","Ray Bradbury",2012,"Biblioteca Azul","Ficção distópica",216);
     Livro livro10("Tempo do Desprezo - The Witcher: Volume 4","Andrzej Sapkowski",2015,"WMF Martins Fontes","Fantasia",352);
     Monografia monografia1("Equipes auto-gerenciáveis","Pedro Leite da Silva",90,2020,"José Araújo Pinto","Gestão","UFS","Conquistas e desafios de equipes auto-gerenciáveis");
+    Periodico periodico1("Jornal do dia","Nelson Freire",20,2020,"15","Aracaju-SE","Nelson Edits");
     Usuario usuario1("090.096.115-58","Nelson Jacomé da Silva","12/12/2002");
     Usuario usuario2("065.031.255-39","Nena Letícia dos Santos", "11/09/2001");
     Usuario usuario3("526.115.252-69","Renan Henrique Danilo Nogueira","10/9/1980");
@@ -40,6 +41,7 @@ int main(){
     bib1.AddItem(&livro9);
     bib1.AddItem(&livro10);
     bib1.AddItem(&monografia1);
+    bib1.AddItem(&periodico1);
     bib1.AddUser(&usuario1);
     bib1.AddUser(&usuario2);
     bib1.AddUser(&usuario3);
@@ -57,10 +59,12 @@ int main(){
     bib1.relatorio_estatistico();
     bib1.Emprestar({&livro1,&monografia1},&usuario1,30,01,2021);
     bib1.Emprestar({&livro2},&usuario1,30,1,2021);
+    bib1.Emprestar({&livro3,&livro4,&livro5},&usuario5,4,10,2022);
     bib1.ShowAllBooks();
     bib1.ShowAllMono();
     bib1.Emprestar({&livro1},&usuario2,20,4,2022);
     bib1.ShowAllUsers();
+    bib1.ShowAllPerio();
     bib1.relatorio_estatistico();
     return 0;
 }
