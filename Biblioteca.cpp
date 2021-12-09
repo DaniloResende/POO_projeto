@@ -136,6 +136,8 @@ void Biblioteca::ReadUsuario(Usuario *usuario){
 
 }
 void Biblioteca::ShowAllUsers(){
+    cout << "LISTA USUÁRIOS" << endl;
+    cout << "--------------------------------------------------------------" << endl;
     for (size_t i = 0; i < usuarios.size(); ++i) {
         ReadUsuario(usuarios[i]);
         cout << "--------------------------------------------------------------" << endl;
@@ -143,6 +145,8 @@ void Biblioteca::ShowAllUsers(){
 
 }
 void Biblioteca::ShowAllBooks(){
+    cout << "LISTA LIVROS" << endl;
+    cout << "--------------------------------------------------------------" << endl;
         for (size_t i = 0; i < livros.size(); ++i) {
         ReadItem(livros[i]);
         cout << "--------------------------------------------------------------" << endl;
@@ -151,6 +155,8 @@ void Biblioteca::ShowAllBooks(){
 }
 
 void Biblioteca::ShowAllMono(){
+    cout << "LISTA MONOGRAFIAS" << endl;
+    cout << "--------------------------------------------------------------" << endl;
     for (size_t i = 0; i < monografias.size(); ++i){
         ReadItem(monografias[i]);
         cout << "--------------------------------------------------------------" << endl;
@@ -160,6 +166,8 @@ void Biblioteca::ShowAllMono(){
 }
 
 void Biblioteca::ShowAllPerio(){
+    cout << "LISTA PERIÓDICOS" << endl;
+    cout << "--------------------------------------------------------------" << endl;
     for (size_t i = 0; i < periodicos.size(); ++i){
         ReadItem(periodicos[i]);
         cout << "--------------------------------------------------------------" << endl;
@@ -388,6 +396,8 @@ bool Biblioteca::Adimplencia(Usuario *usuario, int d, int m, int a){
         return false;
 }
 void Biblioteca::relatorio_estatistico(){
+    cout << "RELATÓRIO ESTATÍSTICO" << endl;
+    cout << "--------------------------------------------------------------" << endl;
     int total_reservas = 0;
     int total_emprestimos = 0;
     int total_livros = 0;

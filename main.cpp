@@ -1,5 +1,6 @@
 #include "Biblioteca.h"
 #include <iostream>
+#include <cstdio>
 
 
 
