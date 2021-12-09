@@ -38,21 +38,21 @@ void Usuario::set_datanascimento(string p_datanascimento){
 
 void Usuario::livrosemprestadosUsuario(){
     for (size_t i = 0; i < livrosemprestados.size(); ++i) {
-        cout << livrosemprestados[i]->get_nome() << " ";
+        cout << livrosemprestados[i]->get_nome() << "; ";
     }
     cout << endl;
 }
 
 void Usuario::periodicosemprestadosUsuario(){
     for (size_t i = 0; i < periodicosemprestados.size(); ++i) {
-        cout << periodicosemprestados[i]->get_nome() << " ";
+        cout << periodicosemprestados[i]->get_nome() << "; ";
     }
     cout << endl;
 }
 
 void Usuario::monografiasemprestadasUsuario(){
     for (size_t i = 0; i < monografiasemprestadas.size(); ++i) {
-        cout << monografiasemprestadas[i]->get_nome() << " ";
+        cout << monografiasemprestadas[i]->get_nome() << "; ";
     }
     cout << endl;
 }

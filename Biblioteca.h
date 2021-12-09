@@ -19,18 +19,24 @@ public:
    Biblioteca(/* args */);
    ~Biblioteca();
    //CRUD
-   void AddLivro(Livro *livro);//poe livro(s) na biblioteca
+   void AddItem(Livro *livro);//poe livro(s) na biblioteca
    void AddUser(Usuario *usuario);
-   void AddMonografia(Monografia *monografia);
-   void AddPeriodico(Periodico *periodico);
-   void ReadMonografia(Monografia *monografia);
-   void ReadLivro(Livro *livro);//consulta um livro  
+   void AddItem(Monografia *monografia);
+   void AddItem(Periodico *periodico);
+   void ReadItem(Monografia *monografia);
+   void ReadItem(Livro *livro);//consulta um livro
+   void ReadItem(Periodico *periodico);
    void ReadUsuario(Usuario *usuario);//consulta um usuario
    void ShowAllMono();
    void ShowAllUsers();//mostra todos os usuarios da biblioteca
    void ShowAllBooks();//mostra todos os livros da biblioteca
-   void UpdateLivro(Livro *livro, string nome , string autor, int num_paginas , string genero , string editora);
-   void DeleteLivro(Livro *livro);
+   void ShowAllPerio();
+   void UpdateItem(Livro *livro, string nome , string autor, int num_paginas , string genero , string editora);
+   void UpdateItem(Monografia *monografia, string nome , string autor, int num_paginas , string curso, string orientador, string tema, string instituicao);
+   void UpdateItem(Periodico *periodico, string nome , string autor, int num_paginas , string edicao , string local);
+   void DeleteItem(Livro *livro);
+   void DeleteItem(Monografia *monografia);
+   void DeleteItem(Periodico *periodico);
    void DeleteReserva(Reserva *reserva);
    void DeleteEmprestimo(Emprestimo *emprestimo);
    void UpdateUser(Usuario *usuario, string cpf, string nome, string datanascimento);

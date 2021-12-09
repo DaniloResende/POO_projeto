@@ -16,6 +16,7 @@ string instituicao;
 string tema; 
 public:
    Monografia(/* args */);
+   Monografia(string p_nome, string p_autor, int p_num_paginas, int p_ano_lancamento, string p_orientador, string p_curso, string p_instituicao, string p_tema);
    ~Monografia();
    void set_orientador(string p_orientador);
    void set_curso(string p_curso);

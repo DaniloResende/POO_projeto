@@ -9,15 +9,15 @@ Biblioteca::Biblioteca(/* args */){}
 Biblioteca::~Biblioteca(){}
 
                       
-void Biblioteca::AddLivro(Livro *livro){
+void Biblioteca::AddItem(Livro *livro){
     livros.push_back(livro);
 }
 
-void Biblioteca::AddMonografia(Monografia *monografia){
+void Biblioteca::AddItem(Monografia *monografia){
     monografias.push_back(monografia);
 }
 
-void Biblioteca:: AddPeriodico(Periodico *periodico){
+void Biblioteca:: AddItem(Periodico *periodico){
     periodicos.push_back(periodico);
 }
 
@@ -25,7 +25,7 @@ void Biblioteca::AddUser(Usuario *usuario){
     usuarios.push_back(usuario);
 }
 
-void Biblioteca::ReadLivro(Livro *livro){
+void Biblioteca::ReadItem(Livro *livro){
     cout << "Nome: " << livro->get_nome() << endl;
     cout << "Autor: " << livro->get_autor()<< endl;
     if (livro->get_emprestado() == 1)
@@ -56,7 +56,7 @@ void Biblioteca::ReadLivro(Livro *livro){
 
 }
 
-void Biblioteca::ReadMonografia(Monografia *monografia){
+void Biblioteca::ReadItem(Monografia *monografia){
     cout << "Nome: " << monografia->get_nome() << endl;
     cout << "Autor: " << monografia->get_autor()<< endl;
     if (monografia->get_emprestado() == 1)
@@ -89,6 +89,37 @@ void Biblioteca::ReadMonografia(Monografia *monografia){
 
 }
 
+void Biblioteca::ReadItem(Periodico *periodico){
+    cout << "Nome: " << periodico->get_nome() << endl;
+    cout << "Autor: " << periodico->get_autor()<< endl;
+    if (periodico->get_emprestado() == 1)
+    {
+        string resp = "Sim";
+        cout << "Emprestado: " << resp << endl;
+    }
+    if (periodico->get_emprestado() == 0)
+    {
+        string resp = "Não";
+        cout << "Emprestado: " << resp << endl;
+    }
+    if (periodico->get_reservado() == 1)
+    {
+        string resp2 = "Sim";
+        cout << "Reservado: " << resp2 << endl;
+    }
+    if (periodico->get_reservado() == 0)
+    {
+        string resp2 = "Não";
+        cout << "Reservado: " << resp2 << endl;
+    }
+    cout << "Edição: " << periodico->get_edicao() << endl;
+    cout << "Editora: " << periodico->get_editora() << endl;
+    cout << "Local: " << periodico->get_local() << endl;
+    cout << "Número de páginas: " << periodico->get_num_paginas()<< endl;
+    cout << "Ano de lançamento: " << periodico->get_ano_lancamento()<< endl;
+    
+
+}
 
 
 
@@ -113,7 +144,7 @@ void Biblioteca::ShowAllUsers(){
 }
 void Biblioteca::ShowAllBooks(){
         for (size_t i = 0; i < livros.size(); ++i) {
-        ReadLivro(livros[i]);
+        ReadItem(livros[i]);
         cout << "--------------------------------------------------------------" << endl;
     }
 
@@ -121,7 +152,16 @@ void Biblioteca::ShowAllBooks(){
 
 void Biblioteca::ShowAllMono(){
     for (size_t i = 0; i < monografias.size(); ++i){
-        ReadMonografia(monografias[i]);
+        ReadItem(monografias[i]);
+        cout << "--------------------------------------------------------------" << endl;
+        
+    }
+
+}
+
+void Biblioteca::ShowAllPerio(){
+    for (size_t i = 0; i < periodicos.size(); ++i){
+        ReadItem(periodicos[i]);
         cout << "--------------------------------------------------------------" << endl;
         
     }
@@ -129,7 +169,7 @@ void Biblioteca::ShowAllMono(){
 }
 
 
-void Biblioteca::UpdateLivro(Livro *livro, string nome , string autor, int num_paginas , string genero , string editora){
+void Biblioteca::UpdateItem(Livro *livro, string nome , string autor, int num_paginas , string genero , string editora){
     livro->set_nome(nome);
     livro->set_autor(autor);
     livro->set_numero_paginas(num_paginas);
@@ -137,10 +177,46 @@ void Biblioteca::UpdateLivro(Livro *livro, string nome , string autor, int num_p
     livro->set_editora(editora);
 
 }
-void Biblioteca::DeleteLivro(Livro *livro){
+
+void Biblioteca::UpdateItem(Monografia *monografia, string nome , string autor, int num_paginas , string curso, string orientador, string tema, string instituicao ){
+    monografia->set_nome(nome);
+    monografia->set_autor(autor);
+    monografia->set_numero_paginas(num_paginas);
+    monografia->set_curso(curso);
+    monografia->set_orientador(orientador);
+    monografia->set_tema(tema);
+    monografia->set_instituicao(instituicao);
+
+}
+
+void Biblioteca::UpdateItem(Periodico *periodico, string nome , string autor, int num_paginas , string edicao , string local){
+    periodico->set_nome(nome);
+    periodico->set_autor(autor);
+    periodico->set_numero_paginas(num_paginas);
+    periodico->set_edicao(edicao);
+    periodico->set_local(local);
+
+}
+void Biblioteca::DeleteItem(Livro *livro){
     for (size_t i = 0; i < livros.size(); ++i) {
         if (livros[i] == livro){
             livros.erase(livros.begin()+i);
+        }
+    }
+}
+
+void Biblioteca::DeleteItem(Monografia *monografia){
+    for (size_t i = 0; i < monografias.size(); ++i) {
+        if (monografias[i] == monografia){
+            monografias.erase(monografias.begin()+i);
+        }
+    }
+}
+
+void Biblioteca::DeleteItem(Periodico *periodico){
+    for (size_t i = 0; i < periodicos.size(); ++i) {
+        if (periodicos[i] == periodico){
+            periodicos.erase(periodicos.begin()+i);
         }
     }
 }
@@ -226,7 +302,7 @@ void Biblioteca::Emprestar(vector<Item *> itens, Usuario *usuario, int d, int m,
             cout << "O item de nome " << itens[i]->get_nome()<< " se encontra reservado, portanto não é  possível realizar o empréstimo" << endl;
         }
         else if (itens[i]->get_emprestado()==1){
-            cout << "O item de nome " << itens[i]->get_nome() << " já está emprestado, portanto não é possível realizar o empréstimo" << endl;
+            cout << "O item de nome '" << itens[i]->get_nome() << "' já está emprestado, portanto não é possível realizar o empréstimo" << endl;
         }
         else{
         Emprestimo* emprestimo1 = new Emprestimo(usuario,itens[i]);
